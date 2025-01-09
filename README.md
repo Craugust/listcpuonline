@@ -1,2 +1,1 @@
-# listcpuonline
-List CPU Online
+# List CPU Online
