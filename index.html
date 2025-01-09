@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List CPU Online</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+            margin-top: 20px;
+            font-size: 2.5rem;
+        }
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .search-box {
+            width: 80%;
+            max-width: 500px;
+            padding: 15px;
+            font-size: 1rem;
+            border: 2px solid #ccc;
+            border-radius: 25px;
+            outline: none;
+            transition: all 0.3s;
+        }
+        .search-box:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+        }
+        .cpu-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0 auto;
+            max-width: 600px;
+        }
+        .cpu-item {
+            padding: 15px;
+            margin: 10px 0;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .cpu-item a {
+            display: block;
+            padding: 15px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            background-color: #4CAF50;
+            color: #fff;
+            border-radius: 8px;
+            transition: background-color 0.3s, box-shadow 0.2s;
+        }
+        .cpu-item a:hover {
+            background-color: #45a049;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .cpu-item.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to List CPU Online!</h1>
+
+    <div class="search-container">
+        <input 
+            type="text" 
+            class="search-box" 
+            placeholder="Search CPUs..." 
+            oninput="filterList()"
+        />
+    </div>
+
+    <ul class="cpu-list">
+        <li class="cpu-item">
+            <a href="i9-14900k.html">Intel® Core™ i9 14900K</a>
+        </li>
+        <li class="cpu-item">
+            <a href="i9-14900.html">Intel® Core™ i9 14900</a>
+        </li>
+        <!-- Add more CPUs here -->
+    </ul>
+
+    <script>
+        function filterList() {
+            const searchBox = document.querySelector('.search-box');
+            const filterText = searchBox.value.toLowerCase();
+            const items = document.querySelectorAll('.cpu-item');
+
+            items.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(filterText)) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
